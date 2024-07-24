@@ -1,0 +1,40 @@
+# Start the ZooKeeper service
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+
+# Start the Kafka broker service
+$ bin/kafka-server-start.sh config/server.properties
+
+
+#CREATE A TOPIC TO STORE YOUR EVENTS
+bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092
+#quickstart-event =Give name to topic 
+
+
+#describe topic 
+ bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+ #quickstart-event =name of topic 
+ 
+ 
+# WRITE SOME EVENTS INTO THE TOPIC
+ bin/kafka-console-producer.sh --topic quickstart-events --bootstrap-server localhost:9092
+
+#Example 
+#This is my first event
+#This is my second event
+
+#quickstart-event =Give name to topic where you have to create 
+
+
+#READ THE EVENTS
+
+ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server localhost:9092
+
+ #Exmaple
+#This is my first event
+#This is my second event
+
+#quickstart-event =Give name to topic which producer you have toread
+#--from-beginning is use to read message from starting 
+#if we not use then we only read future message
+
+//# consumers can be multiple of same producer
